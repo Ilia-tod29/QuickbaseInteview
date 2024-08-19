@@ -1,4 +1,4 @@
-# Fitness Club Manager Client
+# Field Builder
 
 This project is a front-end Angular project for an interview with Quickbase.
 The project itself is intended to be a form generator which calls an API that should generate a form for the user(it is mocked) and was created using [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0
@@ -20,6 +20,9 @@ The project itself is intended to be a form generator which calls an API that sh
 - Run `ng test`
 
 ## Quick preview
+
+![Screenshot 2024-08-19 at 23 54 45](https://github.com/user-attachments/assets/b87786f2-b6d2-47f3-a0f1-47a33c155a7b)
+![Screenshot 2024-08-19 at 23 55 08](https://github.com/user-attachments/assets/e9ae8810-3126-4adf-9b41-237c4fdcf4ca)
 
 # Assignment
 ## General Description
