@@ -1,0 +1,64 @@
+.btn {
+    padding: 10px 15px;
+    font-size: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: transparent;
+}
+
+.btn-success {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #4cae4c;
+}
+
+.btn-danger {
+    color: #d9534f;
+    padding: 0;
+    background-color: transparent;
+}
+
+.btn-danger:hover {
+    border-bottom: 1px solid #c9302c;
+    border-radius: 0px;
+}
+
+.spinner {
+    width: 15px;
+    height: 15px;
+    border: 3px solid #000000;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.btn-loading {
+    cursor: not-allowed;
+}
+
+// .btn-loading:hover {
+//     border-bottom: none;
+// }
+
+@media (max-width: 768px) {
+    .btn {
+        width: 100%;
+        margin: 5px 0;
+    }    
+}

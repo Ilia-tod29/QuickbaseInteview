@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FieldBuilderService } from '../services/field-builder.service';
+import { GenericButtonComponent } from '../generic-button/generic-button.component';
 
 @Component({
   selector: 'app-field-builder',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, GenericButtonComponent],
   templateUrl: './field-builder.component.html',
   styleUrl: './field-builder.component.scss'
 })
@@ -24,6 +25,8 @@ export class FieldBuilderComponent implements OnInit {
   labelError: string | null = null;
   choicesError: string | null = null;
   fieldBuilderService = inject(FieldBuilderService);
+  cancelBtnLoading: boolean = false;
+  saveBtnLoading: boolean = false;
 
   localStorageKey = "formData";
 
@@ -86,10 +89,12 @@ export class FieldBuilderComponent implements OnInit {
   }
 
   saveForm() {
+    this.saveBtnLoading = true;
     this.validateForm();
     this.validateChoices();
 
     if (this.labelError || this.choicesError) {
+      this.saveBtnLoading = false;
       return;
     }
 
@@ -121,11 +126,14 @@ export class FieldBuilderComponent implements OnInit {
           console.log(data);
           console.log("Data sent: ");
           console.log(formData)
+          this.saveBtnLoading = false;
         },
         error: (err: any) => {
           console.log(err);
+          this.saveBtnLoading = false;
         }
       });
+
   }
 
   saveFormDataToLocalStorage() {
@@ -155,6 +163,7 @@ export class FieldBuilderComponent implements OnInit {
   }
 
   clearForm() {
+    this.cancelBtnLoading = true;
     this.label = "";
     this.type = "multi-select";
     this.isRequired = true;
@@ -165,6 +174,7 @@ export class FieldBuilderComponent implements OnInit {
     this.choicesError = null;
 
     localStorage.removeItem(this.localStorageKey);
+    this.cancelBtnLoading = false;
   }
 
   capitalizeFirstLetter(input: string): string {

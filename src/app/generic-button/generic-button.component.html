@@ -1,0 +1,5 @@
+<button [ngClass]="[btnClass, loading ? 'btn-loading' : '', !loading ? colorClass : '']"
+        (click)="handleClick($event)">
+      <span *ngIf="!loading">{{ label }}</span>
+      <span *ngIf="loading" class="spinner"></span>
+</button>
