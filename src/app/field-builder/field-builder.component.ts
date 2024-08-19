@@ -20,7 +20,7 @@ export class FieldBuilderComponent implements OnInit {
   type: string = "multi-select";
   typeOptions: string[] = ["multi-select"];
   order: string = "alphabetical";
-  orderOprions: string[] = ["alphabetical"];
+  orderOptions: string[] = ["alphabetical"];
   highlightedChoices: string[] = [];
   labelError: string | null = null;
   choicesError: string | null = null;
@@ -39,12 +39,14 @@ export class FieldBuilderComponent implements OnInit {
     }
   }
 
-  validateForm() {
+  // Validates the label
+  validateLabel() {
     this.labelError = this.label ? null : "Label is required";
     
     this.saveFormDataToLocalStorage();
   }
 
+  // Performs the whole validation on the choices
   validateChoices() {
     const choicesArray = this.splitChoices();
     const uniqueChoices = new Set(choicesArray);
@@ -67,6 +69,7 @@ export class FieldBuilderComponent implements OnInit {
     this.saveFormDataToLocalStorage();
   }
 
+  // Updates the choices based on the default value. The rule is that the default value must exist within the choices
   validateDefaultValue() {
     const choicesArray = this.splitChoices();
     const uniqueChoices = new Set(choicesArray);
@@ -93,9 +96,10 @@ export class FieldBuilderComponent implements OnInit {
     this.saveFormDataToLocalStorage();
   }
 
+  // Performs all validations before calling the service (calling the API)
   saveForm() {
     this.saveBtnLoading = true;
-    this.validateForm();
+    this.validateLabel();
     this.validateChoices();
 
     if (this.labelError || this.choicesError) {
@@ -141,8 +145,8 @@ export class FieldBuilderComponent implements OnInit {
 
   }
 
+  // Saves the form data to the local storage
   saveFormDataToLocalStorage() {
-    console.log("Local storage saved")
     const choicesArray = this.splitChoices();
     const formData = {
       label: this.label,
@@ -155,6 +159,7 @@ export class FieldBuilderComponent implements OnInit {
     localStorage.setItem(this.localStorageKey, JSON.stringify(formData));
   }
 
+  // Reads the data from the local storage (if such exists) and updates the the form with last updated data.
   loadFormDataFromLocalStorage() {
     const savedFormData = localStorage.getItem("formData");
     if (savedFormData) {
@@ -168,6 +173,7 @@ export class FieldBuilderComponent implements OnInit {
     }
   }
 
+  // Sets the form in a starting position
   clearForm() {
     this.cancelBtnLoading = true;
     this.label = "";
@@ -183,14 +189,17 @@ export class FieldBuilderComponent implements OnInit {
     this.cancelBtnLoading = false;
   }
 
+  // Capitalizes the first letter of a string. e.g. capitalizeFirstLetter("hello") -> "Hello"
   capitalizeFirstLetter(input: string): string {
     return input.charAt(0).toUpperCase() + input.slice(1);
   }
 
+  // Generates an array of the provided choices. e.g. this.choices = "1\n2\n3", splitChoices() -> ["1", "2", "3"]
   private splitChoices(): string[] {
     return this.choices.split('\n').map(choice => choice.trim()).filter(choice => choice);
   }
 
+  // Splits a string on two parts by a delimiter. e.g. splitString("Hello, my name is, John", ",") -> ["Hello,", " my name is, John"]
   private splitString(input: string, delimiter: string): [string, string] {
     const index = input.indexOf(delimiter);
     if (index === -1) {
@@ -202,6 +211,4 @@ export class FieldBuilderComponent implements OnInit {
 
     return [firstPart, secondPart];
   }
-
-
 }

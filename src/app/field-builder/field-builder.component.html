@@ -7,7 +7,7 @@
         <div class="form-group">
             <label for="label">Label</label>
             <div>
-                <input id="label" type="text" [(ngModel)]="label" class="form-control form-control-no-composite" (ngModelChange)="validateForm()">
+                <input id="label" type="text" [(ngModel)]="label" class="form-control form-control-no-composite" (ngModelChange)="validateLabel()">
                 <div *ngIf="labelError" class="error">{{labelError}}</div>
             </div>
         </div>
@@ -42,7 +42,7 @@
         <div class="form-group">
             <label for="order">Order</label>
             <select id="order" class="form-control form-control-no-composite" [(ngModel)]="order">
-                @for (option of this.orderOprions; track $index) {
+                @for (option of this.orderOptions; track $index) {
                     <option value={{option}}>Display choices in {{this.capitalizeFirstLetter(option)}}</option>
                 }
             </select>

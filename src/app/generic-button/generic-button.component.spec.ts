@@ -25,27 +25,27 @@ describe('GenericButtonComponent', () => {
   });
 
   it('should display the correct label', () => {
-    component.label = 'Test Button';
+    component.label = "Test Button";
     fixture.detectChanges();
 
-    const buttonElement = fixture.debugElement.query(By.css('button')).nativeElement;
-    expect(buttonElement.textContent).toContain('Test Button');
+    const buttonElement = fixture.debugElement.query(By.css("button")).nativeElement;
+    expect(buttonElement.textContent).toContain("Test Button");
   });
 
   it('should apply the correct classes', () => {
-    component.btnClass = 'btn-success';
-    component.colorClass = 'btn-danger';
+    component.btnClass = "btn-success";
+    component.colorClass = "btn-danger";
     fixture.detectChanges();
 
-    const buttonElement = fixture.debugElement.query(By.css('button')).nativeElement;
-    expect(buttonElement.classList).toContain('btn-success');
-    expect(buttonElement.classList).toContain('btn-danger');
+    const buttonElement = fixture.debugElement.query(By.css("button")).nativeElement;
+    expect(buttonElement.classList).toContain("btn-success");
+    expect(buttonElement.classList).toContain("btn-danger");
   });
 
   it('should emit clicked event when clicked', () => {
-    spyOn(component.clicked, 'emit');
+    spyOn(component.clicked, "emit");
 
-    const buttonElement = fixture.debugElement.query(By.css('button')).nativeElement;
+    const buttonElement = fixture.debugElement.query(By.css("button")).nativeElement;
     buttonElement.click();
 
     expect(component.clicked.emit).toHaveBeenCalled();
@@ -53,21 +53,21 @@ describe('GenericButtonComponent', () => {
 
   it('should not have the color class when loading', () => {
     component.loading = true;
-    component.colorClass = 'btn-danger';
+    component.colorClass = "btn-danger";
     fixture.detectChanges();
 
-    const buttonElement = fixture.debugElement.query(By.css('button')).nativeElement;
-    expect(buttonElement.classList).not.toContain('btn-danger');
-    expect(buttonElement.classList).toContain('btn-loading');
+    const buttonElement = fixture.debugElement.query(By.css("button")).nativeElement;
+    expect(buttonElement.classList).not.toContain("btn-danger");
+    expect(buttonElement.classList).toContain("btn-loading");
   });
 
   it('should have the color class when not loading', () => {
     component.loading = false;
-    component.colorClass = 'btn-danger';
+    component.colorClass = "btn-danger";
     fixture.detectChanges();
 
-    const buttonElement = fixture.debugElement.query(By.css('button')).nativeElement;
-    expect(buttonElement.classList).toContain('btn-danger');
-    expect(buttonElement.classList).not.toContain('btn-loading');
+    const buttonElement = fixture.debugElement.query(By.css("button")).nativeElement;
+    expect(buttonElement.classList).toContain("btn-danger");
+    expect(buttonElement.classList).not.toContain("btn-loading");
   });
 });

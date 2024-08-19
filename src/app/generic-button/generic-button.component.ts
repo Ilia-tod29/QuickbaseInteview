@@ -16,6 +16,7 @@ export class GenericButtonComponent {
   
   @Output() clicked = new EventEmitter<Event>();
 
+  // Sends a signal that the button is clicked
   handleClick(event: Event) {
     this.clicked.emit(event);
   }

@@ -31,11 +31,11 @@ describe('FieldBuilderComponent', () => {
 
   it('should validate label and set labelError', () => {
     component.label = "";
-    component.validateForm();
+    component.validateLabel();
     expect(component.labelError).toBe("Label is required");
   
     component.label = "Valid Label";
-    component.validateForm();
+    component.validateLabel();
     expect(component.labelError).toBeNull();
   });
 

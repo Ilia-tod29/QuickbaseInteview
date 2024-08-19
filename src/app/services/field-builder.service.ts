@@ -12,10 +12,12 @@ export class FieldBuilderService {
 
   http = inject(HttpClient)
 
+  // Performs the API request (POST)
   createForm(data: any) {
     return this.http.post(ApiConfig.FORM_GENERATOR_ENDPOINT, data).pipe(catchError(this.handleError))
   }
 
+  // Formats the error if one occurred
   private handleError(error: any) {
     console.log(error);
     return throwError(() => new Error("Something went wrong: " + error))
