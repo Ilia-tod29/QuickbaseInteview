@@ -52,12 +52,14 @@
         <div class="form-group">
             <div class="dummy"></div>
             <div class="btn-wrapper">
-                <app-generic-button (clicked)="saveForm()"
+                <app-generic-button id="save-changes"
+                                    (clicked)="saveForm()"
                                     [label]="'Save changes'"
                                     [colorClass]="'btn-success'"
                                     [loading]="saveBtnLoading"></app-generic-button>
                 <span>Or</span>
-                <app-generic-button (clicked)="clearForm()" 
+                <app-generic-button id="clear"
+                                    (clicked)="clearForm()" 
                                     [label]="'Cancel'"
                                     [colorClass]="'btn-danger'"
                                     [loading]="cancelBtnLoading"></app-generic-button>

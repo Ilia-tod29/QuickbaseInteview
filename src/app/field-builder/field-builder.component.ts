@@ -71,17 +71,22 @@ export class FieldBuilderComponent implements OnInit {
     const choicesArray = this.splitChoices();
     const uniqueChoices = new Set(choicesArray);
 
-    if (this.defaultValue.length === 0) {
+    if (this.defaultValue.length === 0 && this.defaultAutoAdded) {
+      // Removed last symbol from the default value field
       this.choices = this.splitString(this.choices, '\n')[1];
       this.defaultAutoAdded = false;
     } else if (!choicesArray.find(choice => choice === this.defaultValue)) {
+      // No match found
       if (this.defaultAutoAdded) {
         this.choices = this.splitString(this.choices, '\n')[1];
       }
       this.choices = this.defaultValue + '\n' + this.choices;
       this.defaultAutoAdded = true;
     } else {
-      this.choices = this.splitString(this.choices, '\n')[1];
+      // A match is found - we should remove the auto added default
+      if (this.defaultAutoAdded) {
+        this.choices = this.splitString(this.choices, '\n')[1];
+      }
       this.defaultAutoAdded = false;
     }
 
@@ -102,7 +107,7 @@ export class FieldBuilderComponent implements OnInit {
 
     // Just in case the logic above is not working
     if (this.defaultValue && !choicesArray.includes(this.defaultValue)) {
-      console.error("Default value was not included in the choices");
+      console.warn("Default value was not included in the choices");
       console.info("Adding the default value to the choices.");
       choicesArray.push(this.defaultValue);
       this.choices = this.defaultValue + '\n' + this.choices;
@@ -137,6 +142,7 @@ export class FieldBuilderComponent implements OnInit {
   }
 
   saveFormDataToLocalStorage() {
+    console.log("Local storage saved")
     const choicesArray = this.splitChoices();
     const formData = {
       label: this.label,
@@ -155,7 +161,7 @@ export class FieldBuilderComponent implements OnInit {
       const formData = JSON.parse(savedFormData);
       this.label = formData.label || "";
       this.type = formData.type || "multi-select";
-      this.isRequired = formData.isRequired || true;
+      this.isRequired = formData.isRequired;
       this.defaultValue = formData.defaultValue || "";
       this.choices = formData.choices ? formData.choices.join('\n') : "";
       this.order = formData.order || "alphabetical";
