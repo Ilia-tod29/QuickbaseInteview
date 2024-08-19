@@ -1,0 +1,155 @@
+.headline {
+    padding: 15px 0 15px 20px;
+    background-color: #D9EEF7;
+    border-bottom: 1px solid #C5EBF3;
+}
+
+.headline h3 {
+    background-color: #D9EEF7;
+    margin: auto;
+    color: #1F6D93;
+}
+
+.main-builder {
+    padding: 40px;
+}
+
+.field-builder {
+    font-family: Arial, sans-serif;
+    max-width: 550px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border: 1px solid #C5EBF3;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    width: 200px;
+}
+
+.form-control {
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-control-no-composite {
+    width: 260px;
+}
+
+.control-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+textarea.form-control {
+    resize: vertical;
+    font-family: inherit;
+}
+
+.error {
+    color: #d9534f;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dummy {
+    width: 200px;
+}
+
+.btn {
+    padding: 10px 15px;
+    font-size: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-success {
+    background-color: #5cb85c;
+    color: white;
+    margin-right: 10px;
+}
+
+.btn-success:hover {
+    background-color: #4cae4c;
+}
+
+.btn-danger {
+    color: #d9534f;
+    padding: 0;
+    margin-left: 10px;
+    background-color: transparent;
+}
+
+.btn-danger:hover {
+    border-bottom: 1px solid #c9302c;
+    border-radius: 0px;
+}
+
+@media (max-width: 768px) {
+    .main-builder {
+        padding: 10px;
+    }
+
+    .field-builder {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-group label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .form-control, 
+    .form-control-no-composite {
+        width: 100%;
+    }
+
+    .control-type {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-wrapper {
+        flex-direction: column;
+        align-items: center;
+        align-self: center;
+    }
+
+    .dummy {
+        display: none;
+    }
+
+    .btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

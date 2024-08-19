@@ -1,0 +1,62 @@
+<div class="field-builder">
+    <div class="headline">
+        <h3>Field Builder</h3>
+    </div>
+
+    <div class="main-builder">
+        <div class="form-group">
+            <label for="label">Label</label>
+            <div>
+                <input id="label" type="text" [(ngModel)]="label" class="form-control form-control-no-composite" (ngModelChange)="validateForm()">
+                <div *ngIf="labelError" class="error">{{labelError}}</div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="type">Type</label>
+            <div class="control-type">
+                <select id="type" class="form-control" [(ngModel)]="type">
+                    @for (option of this.typeOptions; track $index) {
+                        <option value={{option}}>{{this.capitalizeFirstLetter(option)}}</option>
+                    }
+                </select>
+                <div>
+                    <input type="checkbox" [(ngModel)]="isRequired"> A Value is required
+                </div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="defaultValue">Default Value</label>
+            <input id="defaultValue" type="text" [(ngModel)]="defaultValue" class="form-control form-control-no-composite" (ngModelChange)="validateDefaultValue()" >
+        </div>
+    
+        <div class="form-group">
+            <label for="choices">Choices</label>
+            <div class="form-control-no-composite">
+                <textarea id="choices" class="form-control form-control-no-composite" rows="6" [(ngModel)]="choices" (ngModelChange)="validateChoices()"></textarea>
+                <div *ngIf="choicesError" class="error">{{choicesError}}</div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="order">Order</label>
+            <select id="order" class="form-control form-control-no-composite" [(ngModel)]="order">
+                @for (option of this.orderOprions; track $index) {
+                    <option value={{option}}>Display choices in {{this.capitalizeFirstLetter(option)}}</option>
+                }
+            </select>
+        </div>
+
+    
+        <div class="form-group">
+            <div class="dummy"></div>
+            <div class="btn-wrapper">
+                <button (click)="saveForm()" class="btn btn-success">Save changes</button>
+                <span>Or</span>
+                <button (click)="clearForm()" class="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+  
