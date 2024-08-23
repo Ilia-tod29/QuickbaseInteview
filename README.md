@@ -13,6 +13,7 @@ The project itself is intended to be a form generator which calls an API that sh
 
 - Run 'npm install', while located at the root of this project.
 - Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+- NOTE: If the "Save changes" button returns an error, please update the [config file](https://github.com/Ilia-tod29/QuickbaseInteview/blob/main/src/app/config/api-config.ts) with a newly generated mock API. [Steps to create](README.md#generate-a-mock-api)
 
 ## How to test
 
@@ -23,6 +24,14 @@ The project itself is intended to be a form generator which calls an API that sh
 
 ![Screenshot 2024-08-19 at 23 54 45](https://github.com/user-attachments/assets/b87786f2-b6d2-47f3-a0f1-47a33c155a7b)
 ![Screenshot 2024-08-19 at 23 55 08](https://github.com/user-attachments/assets/e9ae8810-3126-4adf-9b41-237c4fdcf4ca)
+
+## Generate a mock API
+1. Navigate to [Mocky](https://designer.mocky.io/).
+1. Click on "New Mock".
+1. Add details about your API call here including a generic response.
+1. Ensure "Never Expire" is checked at the bottom.
+1. Click "Generate My HTTP Response" button at the bottom of the screen.
+1. Copy the "Mock URL" that is provided.
 
 # Assignment
 ## General Description
@@ -110,13 +119,7 @@ the conversation and make changes you think would be worthwhile.
    the form is submitted. This helps demonstrate the prior requirement (that the
    default value is added).
 1. Add a button that allows the builder to clear the form and start fresh.
-1. Generate a Mocky endpoint to use for this craft demo or alternatively use another service/method of your preference to achieve this.  Steps to generate a Mocky endpoint to post data to:
-    1. Navigate to [Mocky](https://designer.mocky.io/).
-    1. Click on "New Mock".
-    1. Add details about your API call here including a generic response.
-    1. Ensure "Never Expire" is checked at the bottom.
-    1. Click "Generate My HTTP Response" button at the bottom of the screen.
-    1. Copy the "Mock URL" that is provided.
+1. Generate a Mocky endpoint to use for this craft demo or alternatively use another service/method of your preference to achieve this. [Steps to generate a Mocky endpoint](README.md#generate-a-mock-api) to post data to
 1. The submit button should create a json object and post it to the link that you 
 generated in the Mocky service above.  It should also log the post data to the console. 
 You can add a function to FieldService in [MockFieldService.js](https://github.com/QuickBase/interview-demos/blob/master/ui/js/MockService.js) to accomplish this, but everything is up 
